@@ -1,0 +1,442 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0B1120 0%, #19223b 100%);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ========= ANIMATED WAVES BACKGROUND ========= */
+        .waves-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat-x;
+            pointer-events: none;
+        }
+
+        .wave-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            min-height: 180px;
+            opacity: 0.5;
+        }
+
+        /* individual waves with different colors and animations */
+        .wave1 {
+            bottom: -5%;
+            animation: waveMove 18s infinite alternate ease-in-out;
+        }
+        .wave1 svg {
+            fill: #ff6a88;
+            opacity: 0.35;
+        }
+        .wave2 {
+            bottom: -2%;
+            animation: waveMove 22s infinite alternate-reverse ease-in-out;
+        }
+        .wave2 svg {
+            fill: #4facfe;
+            opacity: 0.4;
+        }
+        .wave3 {
+            bottom: 5%;
+            animation: waveMove 26s infinite alternate ease-in-out;
+        }
+        .wave3 svg {
+            fill: #f093fb;
+            opacity: 0.3;
+        }
+        .wave4 {
+            bottom: 10%;
+            animation: waveMove 30s infinite alternate-reverse ease-in-out;
+        }
+        .wave4 svg {
+            fill: #43e97b;
+            opacity: 0.2;
+        }
+
+        @keyframes waveMove {
+            0% {
+                transform: translateX(-3%) translateY(0px) scaleX(1);
+            }
+            100% {
+                transform: translateX(3%) translateY(-8px) scaleX(1.02);
+            }
+        }
+
+        /* floating geometric particles for extra depth */
+        .bg-bubble {
+            position: fixed;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatBubble 15s infinite alternate;
+        }
+        @keyframes floatBubble {
+            0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.3; }
+            100% { transform: translateY(-40px) translateX(20px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* ========= MAIN CARD (GLASS / FROSTED) ========= */
+        .cv-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(0px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* inner layout */
+        .cv-inner {
+            padding: 2rem 2rem;
+        }
+
+        /* header section */
+        .hero-section {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(100, 108, 255, 0.2);
+            padding-bottom: 1.8rem;
+        }
+        .name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1F2B4E, #2D3A6E, #5F4B8B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.25rem;
+        }
+        .title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2c3e66;
+            background: rgba(79, 172, 254, 0.15);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            margin-top: 0.3rem;
+        }
+
+        /* two column grid */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        /* left sidebar styles */
+        .left-panel {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.2rem 1.8rem 1.2rem;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #1e293b;
+            word-break: break-word;
+            transition: 0.2s;
+        }
+        .contact-item i {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(145deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .contact-item a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .contact-item a:hover {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem 0;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(120deg, #1e1e2f, #2d3a6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            border-left: 4px solid #4f46e5;
+            padding-left: 12px;
+        }
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* skill tags */
+        .skill-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .skill-category {
+            margin-bottom: 1rem;
+        }
+        .skill-category h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+        .skill-badge {
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1f2a48;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .skill-badge:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #e0e7ff, #ffffff);
+            border-color: #4f46e5;
+        }
+
+        .education-item {
+            margin-bottom: 1rem;
+        }
+        .edu-title {
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .edu-meta {
+            font-size: 0.75rem;
+            color: #475569;
+        }
+
+        /* right panel */
+        .right-panel {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem 1.8rem 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .summary-text {
+            line-height: 1.5;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            background: rgba(255,255,240,0.4);
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            border-left: 3px solid #4f46e5;
+        }
+
+        .job-item {
+            margin-bottom: 1.8rem;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+        .job-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0c1b33;
+        }
+        .job-date {
+            font-size: 0.75rem;
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #334155;
+        }
+        .job-company {
+            font-weight: 500;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .job-desc {
+            list-style: none;
+            padding-left: 0;
+        }
+        .job-desc li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: #2d3a5e;
+        }
+        .job-desc li i {
+            color: #4f46e5;
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
+            width: 16px;
+        }
+
+        /* responsive */
+        @media (max-width: 850px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .cv-inner {
+                padding: 1.5rem;
+            }
+            .name {
+                font-size: 2.2rem;
+            }
+    .hamid{
+            margin: auto
+           }
+           .center{
+            text-align : center
+           }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            .glass-card {
+                border-radius: 1.5rem;
+            }
+            .contact-item {
+                font-size: 0.75rem;
+            }
+           .hamid{
+            margin: auto
+           }
+                      .center{
+            text-align : center
+           }
+        }
+
+        /* additional styling */
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #a5b4fc, transparent);
+        }
+        .github-link {
+            word-break: break-all;
+        }
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        @media print {
+    body {
+        padding: 0 !important;
+        background: white !important;
+    }
+
+    .waves-area,
+    .bg-bubble {
+        display: none !important;
+    }
+
+    .glass-card {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    .cv-container {
+        max-width: 100% !important;
+    }
+
+    .cv-inner {
+        padding: 10px !important;
+        transform: scale(0.85);
+        transform-origin: top center;
+    }
+
+    .name {
+        font-size: 24px !important;
+    }
+
+    .title {
+        font-size: 12px !important;
+    }
+
+    .section-title {
+        font-size: 14px !important;
+        margin: 10px 0 !important;
+    }
+
+    .skill-badge {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+    }
+
+    .job-title {
+        font-size: 12px !important;
+    }
+
+    .job-desc li {
+        font-size: 11px !important;
+    }
+}
